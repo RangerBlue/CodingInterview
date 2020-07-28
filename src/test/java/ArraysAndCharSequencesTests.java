@@ -31,4 +31,34 @@ public class ArraysAndCharSequencesTests {
                 ".\", viene de una linea en la sección 1.10.32";
         assertFalse(ArraysAndCharSequences.uniqueCharacters(tooLongSequence));
     }
+
+    @Test
+    public void reverseCharEndsWithNullAtTheEndSuccess(){
+        char[] input = { 'a', 'b', 'c', 'd', '\u0000' };
+        assertArrayEquals("dcba".toCharArray(), ArraysAndCharSequences.reverse(input));
+    }
+
+    @Test
+    public void reverseCharEndsWithNullInTheMiddleSuccess(){
+        char[] input = { 'a', 'b', 'c', 'd', '\u0000','a', 'b', 'c', 'd' };
+        assertArrayEquals("dcba".toCharArray(), ArraysAndCharSequences.reverse(input));
+    }
+
+    @Test
+    public void reverseCharStartsWithNullSuccess(){
+        char[] input = { 'a', 'b', 'c', 'd', '\u0000','a', 'b', 'c', 'd' };
+        assertArrayEquals("dcba".toCharArray(), ArraysAndCharSequences.reverse(input));
+    }
+
+    @Test
+    public void reverseCharWithoutNullSuccess(){
+        char[] input = { 'a', 'b', 'c', 'd'};
+        assertArrayEquals("dcba".toCharArray(), ArraysAndCharSequences.reverse(input));
+    }
+
+    @Test
+    public void reverseNullCharNullSuccess(){
+        char[] input = { '\u0000'};
+        assertArrayEquals("".toCharArray(), ArraysAndCharSequences.reverse(input));
+    }
 }
