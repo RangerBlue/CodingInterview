@@ -1,7 +1,5 @@
 package DataStructures;
 
-import sun.security.util.ArrayUtil;
-
 import java.util.Arrays;
 
 public class ArraysAndCharSequences {
@@ -35,5 +33,17 @@ public class ArraysAndCharSequences {
             outputArraySize--;
         }
         return outputArray;
+    }
+
+    //1.3
+    public static boolean permutation(char[] first, char[] second) {
+        if (first.length == second.length) {
+            Arrays.sort(first);
+            Arrays.sort(second);
+            if (String.valueOf(first).equals(String.valueOf(second))) {
+                return true;
+            }
+        }
+        return false;
     }
 }

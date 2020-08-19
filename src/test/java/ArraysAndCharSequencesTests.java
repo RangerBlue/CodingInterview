@@ -61,4 +61,32 @@ public class ArraysAndCharSequencesTests {
         char[] input = { '\u0000'};
         assertArrayEquals("".toCharArray(), ArraysAndCharSequences.reverse(input));
     }
+
+    @Test
+    public void permutationTheSameSequenceShouldReturnTrue(){
+        char[] first = { 'a', 'b', 'c', 'd'};
+        char[] second = { 'a', 'c', 'd', 'b'};
+        assertTrue(ArraysAndCharSequences.permutation(first, second));
+    }
+
+    @Test
+    public void permutationUpperCaseShouldReturnFalse(){
+        char[] first = { 'A', 'b', 'c', 'd'};
+        char[] second = { 'a', 'c', 'd', 'b'};
+        assertFalse(ArraysAndCharSequences.permutation(first, second));
+    }
+
+    @Test
+    public void permutationDifferentSequenceShouldReturnFalse(){
+        char[] first = { 'a', 'b', 'c', 'd'};
+        char[] second = { 'a', 'c', 'd', 'a'};
+        assertFalse(ArraysAndCharSequences.permutation(first, second));
+    }
+
+    @Test
+    public void permutationDifferentLengthShouldReturnFalse(){
+        char[] first = { 'a', 'b', 'c', 'd'};
+        char[] second = { 'a', 'c', 'd', 'a', 'a'};
+        assertFalse(ArraysAndCharSequences.permutation(first, second));
+    }
 }
