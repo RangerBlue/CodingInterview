@@ -40,10 +40,32 @@ public class ArraysAndCharSequences {
         if (first.length == second.length) {
             Arrays.sort(first);
             Arrays.sort(second);
-            if (String.valueOf(first).equals(String.valueOf(second))) {
-                return true;
-            }
+            return String.valueOf(first).equals(String.valueOf(second));
         }
         return false;
+    }
+
+    //1.4
+    public static char[] replaceSpaces(char[] str) {
+        int spaceCounter = 0;
+        for (char s : str) {
+            if (s == ' ') {
+                spaceCounter++;
+            }
+        }
+        int newLength = str.length + spaceCounter * 2;
+        char[] output = new char[newLength];
+        for (int i = str.length - 1; i >= 0; i--) {
+            if (str[i] == ' ') {
+                output[newLength - 1] = '%';
+                output[newLength - 2] = '0';
+                output[newLength - 3] = '2';
+                newLength -= 3;
+            } else {
+                output[newLength - 1] = str[i];
+                newLength -= 1;
+            }
+        }
+        return output;
     }
 }

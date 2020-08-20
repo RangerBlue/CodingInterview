@@ -89,4 +89,22 @@ public class ArraysAndCharSequencesTests {
         char[] second = { 'a', 'c', 'd', 'a', 'a'};
         assertFalse(ArraysAndCharSequences.permutation(first, second));
     }
+
+    @Test
+    public void replaceSpacesOneSpaceSuccess(){
+        char[] input = { 'a', ' ', 'c', 'd'};
+        assertArrayEquals("a20%cd".toCharArray(), ArraysAndCharSequences.replaceSpaces(input));
+    }
+
+    @Test
+    public void replaceSpacesTwoSpacesSuccess(){
+        char[] input = { 'a', ' ', 'c',' ', 'd'};
+        assertArrayEquals("a20%c20%d".toCharArray(), ArraysAndCharSequences.replaceSpaces(input));
+    }
+
+    @Test
+    public void replaceSpacesTwoSpacesTwoOnEdgesSuccess(){
+        char[] input = { ' ','a', ' ', 'c',' ', 'd', ' '};
+        assertArrayEquals("20%a20%c20%d20%".toCharArray(), ArraysAndCharSequences.replaceSpaces(input));
+    }
 }
