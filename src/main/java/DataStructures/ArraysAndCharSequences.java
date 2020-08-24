@@ -21,7 +21,7 @@ public class ArraysAndCharSequences {
     //1.2
     public static char[] reverse(char[] str) {
         int outputArraySize = 0;
-        while (outputArraySize<str.length && str[outputArraySize] != '\u0000' ) {
+        while (outputArraySize < str.length && str[outputArraySize] != '\u0000') {
             outputArraySize++;
         }
         char[] outputArray = String.valueOf(str).substring(0, outputArraySize).toCharArray();
@@ -67,5 +67,51 @@ public class ArraysAndCharSequences {
             }
         }
         return output;
+    }
+
+    //1.5
+    public static String compression(String str) {
+        if (compressionCount(str) >= str.length()) {
+            return str;
+        }
+        StringBuilder output = new StringBuilder();
+        char last = str.charAt(0);
+        int counter = 1;
+        for (int i = 1; i < str.length(); i++) {
+            if (last == str.charAt(i)) {
+                counter++;
+            } else {
+                output.append(last);
+                output.append(counter);
+                counter = 1;
+                last = str.charAt(i);
+            }
+        }
+        output.append(last);
+        output.append(counter);
+        return output.toString();
+    }
+
+    public static int compressionCount(String str) {
+        if (str == null || str.isEmpty()) {
+            return 0;
+        }
+
+        int size = 0;
+        char last = str.charAt(0);
+        int counter = 1;
+        for (int i = 1; i < str.length(); i++) {
+            if (last == str.charAt(i)) {
+                counter++;
+            } else {
+                size++;
+                size += String.valueOf(counter).length();
+                counter = 1;
+                last = str.charAt(i);
+            }
+        }
+        size++;
+        size += String.valueOf(counter).length();
+        return size;
     }
 }
