@@ -114,4 +114,21 @@ public class ArraysAndCharSequences {
         size += String.valueOf(counter).length();
         return size;
     }
+
+    //1.6
+    public static int[][] matrix90rotation(int[][] input) {
+        for (int layer = 0; layer < input.length / 2; layer++) {
+            int first = layer;
+            int last = input.length - 1 - layer;
+            for (int i = first; i < last; i++) {
+                int offset = i - first;
+                int upper = input[first][i];
+                input[first][i] = input[last - offset][first];
+                input[last - offset][first] = input[last][last - offset];
+                input[last][last - offset] = input[i][last];
+                input[i][last] = upper;
+            }
+        }
+        return input;
+    }
 }

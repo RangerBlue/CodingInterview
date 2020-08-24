@@ -149,4 +149,57 @@ public class ArraysAndCharSequencesTests {
         String input = "aaaaaaaaaaaBcccccccccccc";
         assertEquals("a11B1c12", ArraysAndCharSequences.compression(input));
     }
+
+    @Test
+    public void matrix3x3rotation() {
+        int[][] input = {
+                {1, 1, 1},
+                {2, 2, 2},
+                {3, 3, 3}
+        };
+
+        int[][] output = {
+                {3, 2, 1},
+                {3, 2, 1},
+                {3, 2, 1}
+        };
+        assertArrayEquals(output, ArraysAndCharSequences.matrix90rotation(input));
+    }
+
+    @Test
+    public void matrix4x4Rotation() {
+        int[][] input = {
+                {1, 1, 1, 1},
+                {2, 2, 2, 2},
+                {3, 3, 3, 3},
+                {4, 4, 4, 4}
+        };
+
+        int[][] output = {
+                {4, 3, 2, 1},
+                {4, 3, 2, 1},
+                {4, 3, 2, 1},
+                {4, 3, 2, 1}
+        };
+        assertArrayEquals(output, ArraysAndCharSequences.matrix90rotation(input));
+    }
+
+    @Test
+    public void matrix1x1Rotation() {
+        int[][] input = {
+                {1}
+        };
+
+        int[][] output = {
+                {1}
+        };
+        assertArrayEquals(output, ArraysAndCharSequences.matrix90rotation(input));
+    }
+
+    @Test
+    public void matrix0x0Rotation() {
+        int[][] input = {};
+        int[][] output = {};
+        assertArrayEquals(output, ArraysAndCharSequences.matrix90rotation(input));
+    }
 }
