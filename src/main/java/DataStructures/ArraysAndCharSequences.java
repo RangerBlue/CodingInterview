@@ -131,4 +131,47 @@ public class ArraysAndCharSequences {
         }
         return input;
     }
+
+    //1.7
+    public static int[][] matrixSetZeroInRowsAndCols(int[][] input) {
+        boolean[] rows = new boolean[input.length];
+        boolean[] cols = new boolean[input[0].length];
+
+        for (int i = 0; i < rows.length; i++) {
+            for (int j = 0; j < cols.length; j++) {
+                if (input[i][j] == 0) {
+                    rows[i] = true;
+                    cols[j] = true;
+                }
+            }
+        }
+
+        for (int i = 0; i < rows.length; i++) {
+            if (rows[i]) {
+                setZeroInRow(input, i);
+            }
+        }
+
+        for (int i = 0; i < cols.length; i++) {
+            if (rows[i]) {
+                setZeroInColumn(input, i);
+            }
+        }
+
+        return input;
+    }
+
+    public static int[][] setZeroInRow(int[][] matrix, int rowNumber) {
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[rowNumber][i] = 0;
+        }
+        return matrix;
+    }
+
+    public static int[][] setZeroInColumn(int[][] matrix, int columnNumber) {
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i][columnNumber] = 0;
+        }
+        return matrix;
+    }
 }

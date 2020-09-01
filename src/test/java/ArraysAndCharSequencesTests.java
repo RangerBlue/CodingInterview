@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 public class ArraysAndCharSequencesTests {
 
+    //1.1
     @Test
     public void uniqueSentenceShouldReturnTrue() {
         String uniqueSequence = "ABcfegplm356";
@@ -32,6 +33,7 @@ public class ArraysAndCharSequencesTests {
         assertFalse(ArraysAndCharSequences.uniqueCharacters(tooLongSequence));
     }
 
+    //1.2
     @Test
     public void reverseCharEndsWithNullAtTheEndSuccess() {
         char[] input = {'a', 'b', 'c', 'd', '\u0000'};
@@ -62,6 +64,7 @@ public class ArraysAndCharSequencesTests {
         assertArrayEquals("".toCharArray(), ArraysAndCharSequences.reverse(input));
     }
 
+    //1.3
     @Test
     public void permutationTheSameSequenceShouldReturnTrue() {
         char[] first = {'a', 'b', 'c', 'd'};
@@ -90,6 +93,7 @@ public class ArraysAndCharSequencesTests {
         assertFalse(ArraysAndCharSequences.permutation(first, second));
     }
 
+    //1.4
     @Test
     public void replaceSpacesOneSpaceSuccess() {
         char[] input = {'a', ' ', 'c', 'd'};
@@ -108,6 +112,7 @@ public class ArraysAndCharSequencesTests {
         assertArrayEquals("20%a20%c20%d20%".toCharArray(), ArraysAndCharSequences.replaceSpaces(input));
     }
 
+    //1.5
     @Test
     public void compressSequenceSuccess() {
         String input = "aaabbbccc";
@@ -150,6 +155,7 @@ public class ArraysAndCharSequencesTests {
         assertEquals("a11B1c12", ArraysAndCharSequences.compression(input));
     }
 
+    //1.6
     @Test
     public void matrix3x3rotation() {
         int[][] input = {
@@ -201,5 +207,66 @@ public class ArraysAndCharSequencesTests {
         int[][] input = {};
         int[][] output = {};
         assertArrayEquals(output, ArraysAndCharSequences.matrix90rotation(input));
+    }
+
+    //1.7
+    @Test
+    public void setZeroInMatrixOneZeroSuccess() {
+        int[][] input = {
+                {1, 1, 1, 1},
+                {2, 0, 2, 2},
+                {3, 3, 3, 3},
+                {4, 4, 4, 4}
+        };
+
+        int[][] output = {
+                {1, 0, 1, 1},
+                {0, 0, 0, 0},
+                {3, 0, 3, 3},
+                {4, 0, 4, 4}
+        };
+        assertArrayEquals(output, ArraysAndCharSequences.matrixSetZeroInRowsAndCols(input));
+    }
+
+    @Test
+    public void setZeroInMatrixTwoZerosSuccess() {
+        int[][] input = {
+                {1, 1, 1, 1},
+                {2, 0, 2, 2},
+                {3, 3, 3, 3},
+                {4, 4, 4, 0}
+        };
+
+        int[][] output = {
+                {1, 0, 1, 0},
+                {0, 0, 0, 0},
+                {3, 0, 3, 0},
+                {0, 0, 0, 0}
+        };
+        assertArrayEquals(output, ArraysAndCharSequences.matrixSetZeroInRowsAndCols(input));
+    }
+
+    @Test
+    public void setZeroIn1x1MatrixSuccess() {
+        int[][] input = {
+                {0}
+        };
+
+        int[][] output = {
+                {0}
+        };
+        assertArrayEquals(output, ArraysAndCharSequences.matrixSetZeroInRowsAndCols(input));
+    }
+
+    @Test
+    public void doNotSetZeroIn1x1MatrixSuccess() {
+        int[][] input = {
+                {1}
+        };
+
+        int[][] output = {
+                {1}
+        };
+        assertArrayEquals(output, ArraysAndCharSequences.matrixSetZeroInRowsAndCols(input));
     }
 }
