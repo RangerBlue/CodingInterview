@@ -174,4 +174,17 @@ public class ArraysAndCharSequences {
         }
         return matrix;
     }
+
+    //1.8
+    public static boolean isRotation(String input, String original) {
+        int inputLength = input.length();
+        if (inputLength > 0 && inputLength == original.length()) {
+            String base = input + input;
+            if (base.contains(original)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

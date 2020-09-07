@@ -269,4 +269,54 @@ public class ArraysAndCharSequencesTests {
         };
         assertArrayEquals(output, ArraysAndCharSequences.matrixSetZeroInRowsAndCols(input));
     }
+
+    //1.8
+    @Test
+    public void isRotationAt5ElementReturnsTrue() {
+        String input = "koniklaj";
+        String original = "lajkonik";
+        assertTrue(ArraysAndCharSequences.isRotation(input, original));
+    }
+
+    @Test
+    public void isRotationAt2ElementReturnsTrue() {
+        String input = "jkonikla";
+        String original = "lajkonik";
+        assertTrue(ArraysAndCharSequences.isRotation(input, original));
+    }
+
+    @Test
+    public void isRotationTheSameArgumentsReturnsTrue() {
+        String input = "lajkonik";
+        String original = "lajkonik";
+        assertTrue(ArraysAndCharSequences.isRotation(input, original));
+    }
+
+    @Test
+    public void isRotationReturnsFalse() {
+        String input = "klajonik";
+        String original = "lajkonik";
+        assertFalse(ArraysAndCharSequences.isRotation(input, original));
+    }
+
+    @Test
+    public void isRotationEmptyFirstArgumentReturnsFalse() {
+        String input = "";
+        String original = "lajkonik";
+        assertFalse(ArraysAndCharSequences.isRotation(input, original));
+    }
+
+    @Test
+    public void isRotationEmptySecondArgumentReturnsFalse() {
+        String input = "koniklaj";
+        String original = "";
+        assertFalse(ArraysAndCharSequences.isRotation(input, original));
+    }
+
+    @Test
+    public void isRotationEmptyArgumentsReturnsFalse() {
+        String input = "";
+        String original = "";
+        assertFalse(ArraysAndCharSequences.isRotation(input, original));
+    }
 }
