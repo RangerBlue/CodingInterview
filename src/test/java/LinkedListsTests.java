@@ -1,6 +1,7 @@
 import DataStructures.LinkedLists;
 import org.junit.Test;
 import util.ListNode;
+import util.NodeWrapper;
 
 
 import static org.junit.Assert.*;
@@ -109,6 +110,85 @@ public class LinkedListsTests {
             expected = expected.next;
             actual = actual.next;
         }
+    }
+
+    //1.2
+    @Test
+    public void testFindLast3ElementRecurrenceSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+
+        assertEquals(5, LinkedLists.findNLastElementRecurrence(list, 3, new NodeWrapper()).value);
+    }
+
+    @Test
+    public void testFindLast1ElementRecurrenceSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+
+        assertEquals(7, LinkedLists.findNLastElementRecurrence(list, 1, new NodeWrapper()).value);
+    }
+
+    @Test
+    public void testFindLastOutOfTheBoundElementRecurrenceReturnsNull() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+
+        assertNull(LinkedLists.findNLastElementRecurrence(list, 10, new NodeWrapper()));
+    }
+
+    @Test
+    public void testFindLast3ElementSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+
+        assertEquals(5, LinkedLists.findNLastElement(list, 3).value);
+    }
+
+    @Test
+    public void testFindLast1ElementSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+
+        assertEquals(7, LinkedLists.findNLastElement(list, 1).value);
+    }
+
+    @Test
+    public void testFindLastOutOfTheBoundElementReturnsNull() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+
+        assertNull(LinkedLists.findNLastElement(list, 10));
     }
 
 }

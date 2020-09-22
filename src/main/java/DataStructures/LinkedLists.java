@@ -1,6 +1,7 @@
 package DataStructures;
 
 import util.ListNode;
+import util.NodeWrapper;
 
 import java.util.HashSet;
 
@@ -34,5 +35,34 @@ public class LinkedLists {
             }
             current = current.next;
         }
+    }
+
+    public static ListNode findNLastElementRecurrence(ListNode head, int elementNumber, NodeWrapper counter) {
+        if (head == null) return null;
+        ListNode node = findNLastElementRecurrence(head.next, elementNumber, counter);
+        counter.setIndex(counter.getIndex()+1);
+        if(counter.getIndex() == elementNumber){
+            return head;
+        }
+        return node;
+    }
+
+    public static ListNode findNLastElement(ListNode head, int elementNumber) {
+        if (elementNumber<=0) return null;
+        ListNode p1 = head;
+        ListNode p2 = head;
+
+        for(int i=0; i < elementNumber-1 ; i++){
+            if(p2 == null) return null;
+            p2 = p2.next;
+        }
+
+        if(p2 == null) return null;
+
+        while ((p2.next != null)){
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        return p1;
     }
 }
