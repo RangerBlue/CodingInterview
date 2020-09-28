@@ -191,4 +191,102 @@ public class LinkedListsTests {
         assertNull(LinkedLists.findNLastElement(list, 10));
     }
 
+    //1.3
+    @Test
+    public void testDeleteNodeSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+
+        assertTrue(LinkedLists.deleteNode(list.next.next));
+        ListNode expectedList = new ListNode(1);
+        expectedList.append(2);
+        expectedList.append(4);
+        expectedList.append(5);
+        expectedList.append(6);
+        expectedList.append(7);
+
+        assertLinkedListAreEqual(expectedList, list);
+    }
+
+    @Test
+    public void testDeleteLastElement() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+
+        assertFalse(LinkedLists.deleteNode(list.next.next));
+        ListNode expectedList = new ListNode(1);
+        expectedList.append(2);
+        expectedList.append(3);
+
+        assertLinkedListAreEqual(expectedList, list);
+    }
+
+    @Test
+    public void testListPartitionSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(3);
+        list.append(6);
+        list.append(4);
+        list.append(2);
+        list.append(7);
+        list.append(5);
+
+        ListNode expectedList = new ListNode(2);
+        expectedList.append(3);
+        expectedList.append(1);
+        expectedList.append(5);
+        expectedList.append(7);
+        expectedList.append(4);
+        expectedList.append(6);
+
+        assertLinkedListAreEqual(expectedList, LinkedLists.listPartition(list, 4));
+    }
+
+    @Test
+    public void testListPartitionOnlyLesserSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(3);
+        list.append(6);
+        list.append(4);
+        list.append(2);
+        list.append(7);
+        list.append(5);
+
+        ListNode expectedList = new ListNode(5);
+        expectedList.append(7);
+        expectedList.append(2);
+        expectedList.append(4);
+        expectedList.append(6);
+        expectedList.append(3);
+        expectedList.append(1);
+
+        assertLinkedListAreEqual(expectedList, LinkedLists.listPartition(list, 10));
+    }
+
+    @Test
+    public void testListPartitionOnlyGreaterSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(3);
+        list.append(6);
+        list.append(4);
+        list.append(2);
+        list.append(7);
+        list.append(5);
+
+        ListNode expectedList = new ListNode(5);
+        expectedList.append(7);
+        expectedList.append(2);
+        expectedList.append(4);
+        expectedList.append(6);
+        expectedList.append(3);
+        expectedList.append(1);
+
+        assertLinkedListAreEqual(expectedList, LinkedLists.listPartition(list, 0));
+    }
 }
