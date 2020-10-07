@@ -289,4 +289,41 @@ public class LinkedListsTests {
 
         assertLinkedListAreEqual(expectedList, LinkedLists.listPartition(list, 0));
     }
+
+    //2.5
+    @Test
+    public void testListAdditionSuccess() {
+        ListNode list1 = new ListNode(7);
+        list1.append(1);
+        list1.append(6);
+
+        ListNode list2 = new ListNode(5);
+        list2.append(9);
+        list2.append(2);
+
+        ListNode expectedList = new ListNode(2);
+        expectedList.append(1);
+        expectedList.append(9);
+
+        assertLinkedListAreEqual(expectedList, LinkedLists.addListsInverted(list1, list2, 0));
+    }
+
+    @Test
+    public void testTwoListsWithDifferentLengthAdditionSuccess() {
+        ListNode list1 = new ListNode(7);
+        list1.append(1);
+        list1.append(6);
+        list1.append(1);
+
+        ListNode list2 = new ListNode(5);
+        list2.append(9);
+        list2.append(2);
+
+        ListNode expectedList = new ListNode(2);
+        expectedList.append(1);
+        expectedList.append(9);
+        expectedList.append(1);
+
+        assertLinkedListAreEqual(expectedList, LinkedLists.addListsInverted(list1, list2, 0));
+    }
 }

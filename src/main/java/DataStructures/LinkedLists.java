@@ -106,4 +106,30 @@ public class LinkedLists {
 
         return head;
     }
+
+    //1.5
+    public static ListNode addListsInverted(ListNode list1, ListNode list2, int carry) {
+        if (list1 == null && list2 == null && carry == 0) {
+            return null;
+        }
+
+        ListNode result = new ListNode();
+        int value = carry;
+        if (list1 != null) {
+            value += list1.value;
+        }
+        if (list2 != null) {
+            value += list2.value;
+        }
+
+        result.value = value % 10;
+
+        if (list1 != null || list2 != null) {
+            ListNode next = addListsInverted(list1 == null ? null : list1.next,
+                    list2 == null ? null : list2.next,
+                    value >= 10 ? 1 : 0);
+            result.next = next;
+        }
+        return result;
+    }
 }
