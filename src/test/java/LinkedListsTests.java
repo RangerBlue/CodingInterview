@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class LinkedListsTests {
 
-    //1.1
+    //2.1
     @Test
     public void testRemoveDuplicatesSuccess() {
         ListNode list = new ListNode(1);
@@ -112,7 +112,7 @@ public class LinkedListsTests {
         }
     }
 
-    //1.2
+    //2.2
     @Test
     public void testFindLast3ElementRecurrenceSuccess() {
         ListNode list = new ListNode(1);
@@ -191,7 +191,7 @@ public class LinkedListsTests {
         assertNull(LinkedLists.findNLastElement(list, 10));
     }
 
-    //1.3
+    //2.3
     @Test
     public void testDeleteNodeSuccess() {
         ListNode list = new ListNode(1);
@@ -227,6 +227,7 @@ public class LinkedListsTests {
         assertLinkedListAreEqual(expectedList, list);
     }
 
+    //2.4
     @Test
     public void testListPartitionSuccess() {
         ListNode list = new ListNode(1);
@@ -325,5 +326,108 @@ public class LinkedListsTests {
         expectedList.append(1);
 
         assertLinkedListAreEqual(expectedList, LinkedLists.addListsInverted(list1, list2, 0));
+    }
+
+    //2.6
+    @Test
+    public void testFindStartOfTheLoopSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        ListNode loopStart = new ListNode(4);
+        list.append(loopStart);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+        list.append(8);
+        list.append(9);
+        list.append(loopStart);
+
+        assertEquals(loopStart.value, LinkedLists.findStartOfLoop(list).value);
+    }
+
+    @Test
+    public void testFindStartOfTheLoopStraightLineLongerThanLoopSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(3);
+        list.append(3);
+        list.append(3);
+        list.append(3);
+        list.append(3);
+        list.append(3);
+        list.append(3);
+        list.append(3);
+        ListNode loopStart = new ListNode(4);
+        list.append(loopStart);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+        list.append(8);
+        list.append(9);
+        list.append(loopStart);
+
+        assertEquals(loopStart.value, LinkedLists.findStartOfLoop(list).value);
+    }
+
+    @Test
+    public void testFindStartOfTheLoopFailure() {
+        ListNode list = new ListNode(1);
+
+        assertEquals(null, LinkedLists.findStartOfLoop(list));
+    }
+
+    //2.7
+    @Test
+    public void testIsListPalindromeEvenSizeSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(3);
+        list.append(2);
+        list.append(1);
+        assertTrue(LinkedLists.isPalindrome(list));
+    }
+
+    @Test
+    public void testIsListPalindromeEvenSizeFailure() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(3);
+        list.append(4);
+        list.append(1);
+        assertFalse(LinkedLists.isPalindrome(list));
+    }
+
+    @Test
+    public void testIsListPalindromeOddSizeSuccess() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(3);
+        list.append(2);
+        list.append(1);
+        assertTrue(LinkedLists.isPalindrome(list));
+    }
+
+    @Test
+    public void testIsListPalindromeOddSizeFailure() {
+        ListNode list = new ListNode(1);
+        list.append(2);
+        list.append(6);
+        list.append(4);
+        list.append(3);
+        list.append(2);
+        list.append(1);
+        assertFalse(LinkedLists.isPalindrome(list));
+    }
+
+    @Test
+    public void testIsListPalindromeOneElementSuccess() {
+        ListNode list = new ListNode(1);
+        assertTrue(LinkedLists.isPalindrome(list));
     }
 }

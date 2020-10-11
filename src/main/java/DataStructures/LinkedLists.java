@@ -3,10 +3,12 @@ package DataStructures;
 import util.ListNode;
 import util.NodeWrapper;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashSet;
 
 public class LinkedLists {
-    //1.1
+    //2.1
     public static void removeDuplicatesInLinkedList(ListNode input) {
         HashSet<Integer> uniqueElements = new HashSet<>();
         ListNode previous = null;
@@ -37,7 +39,7 @@ public class LinkedLists {
         }
     }
 
-    //1.2
+    //2.2
     public static ListNode findNLastElementRecurrence(ListNode head, int elementNumber, NodeWrapper counter) {
         if (head == null) return null;
         ListNode node = findNLastElementRecurrence(head.next, elementNumber, counter);
@@ -67,7 +69,7 @@ public class LinkedLists {
         return p1;
     }
 
-    //1.3
+    //2.3
     public static boolean deleteNode(ListNode node) {
         if (node == null || node.next == null) {
             return false;
@@ -78,7 +80,7 @@ public class LinkedLists {
         return true;
     }
 
-    //1.4
+    //2.4
     public static ListNode listPartition(ListNode node, int x) {
         ListNode before = null;
         ListNode after = null;
@@ -107,7 +109,7 @@ public class LinkedLists {
         return head;
     }
 
-    //1.5
+    //2.5
     public static ListNode addListsInverted(ListNode list1, ListNode list2, int carry) {
         if (list1 == null && list2 == null && carry == 0) {
             return null;
@@ -131,5 +133,61 @@ public class LinkedLists {
             result.next = next;
         }
         return result;
+    }
+
+    //2.6
+    public static ListNode findStartOfLoop(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        //find meeting place
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                break;
+            }
+        }
+
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+
+        slow = head;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast;
+    }
+
+    //2.7
+    public static boolean isPalindrome(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        //find half of the list and add first half to stack
+        while(fast != null && fast.next != null){
+            stack.push(slow.value);
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        //if size is odd skip element in the middle
+        if(fast != null){
+            slow = slow.next;
+        }
+
+        while(slow != null){
+            int top = stack.pop().intValue();
+
+            if(top != slow.value){
+                return false;
+            }
+            slow = slow.next;
+        }
+
+        return true;
     }
 }

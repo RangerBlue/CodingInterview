@@ -20,6 +20,14 @@ public class ListNode {
         }
         current.next = end;
     }
+    public void append(ListNode element){
+        ListNode end = element;
+        ListNode current = this;
+        while(current.next != null){
+            current = current.next;
+        }
+        current.next = end;
+    }
 
     @Override
     public boolean equals(Object o) {
