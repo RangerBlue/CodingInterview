@@ -1,11 +1,11 @@
+import DataStructures.StacksAndQueues;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import util.HanoiTower;
-import util.SetOfStacks;
-import util.StackArray;
-import util.StackWithMinimum;
+import util.*;
+
+import java.util.ArrayDeque;
 
 public class StacksAndArraysTests {
 
@@ -95,6 +95,41 @@ public class StacksAndArraysTests {
         assertEquals(0, towers[2].disks.pop().intValue());
         assertEquals(1, towers[2].disks.pop().intValue());
         assertEquals(2, towers[2].disks.pop().intValue());
+    }
+
+    //3.5
+    @Test
+    public void testMyQueueImplementation() {
+        MyQueue<Integer> queue = new MyQueue<>();
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        queue.add(4);
+        assertEquals(new Integer(4), queue.peek());
+        assertEquals(new Integer(4), queue.remove());
+        assertEquals(new Integer(3), queue.peek());
+    }
+
+    //3.6
+    @Test
+    public void testStackSort() {
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        int i = 4;
+        while (i >= 0) {
+            stack.push(i);
+            i--;
+        }
+        ArrayDeque<Integer> expectedStack = new ArrayDeque<>();
+        int j = 0;
+        while (j <= 4) {
+            expectedStack.push(j);
+            j++;
+        }
+        ArrayDeque<Integer> actualStack = StacksAndQueues.sortStack(stack);
+        assertEquals(expectedStack.pop(), actualStack.pop());
+        assertEquals(expectedStack.pop(), actualStack.pop());
+        assertEquals(expectedStack.pop(), actualStack.pop());
+        assertEquals(expectedStack.pop(), actualStack.pop());
     }
 
 }
