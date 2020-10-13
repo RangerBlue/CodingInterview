@@ -1,4 +1,4 @@
-package util;
+package util.stackandqueues;
 
 public abstract class Animal {
     private int order;

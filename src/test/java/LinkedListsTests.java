@@ -1,7 +1,7 @@
 import DataStructures.LinkedLists;
 import org.junit.Test;
-import util.ListNode;
-import util.NodeWrapper;
+import util.linkedlists.ListNode;
+import util.linkedlists.NodeWrapper;
 
 
 import static org.junit.Assert.*;

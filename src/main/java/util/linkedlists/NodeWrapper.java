@@ -1,4 +1,4 @@
-package util;
+package util.linkedlists;
 
 public class NodeWrapper {
     int index;

@@ -1,4 +1,4 @@
-package util;
+package util.stackandqueues;
 
 public class StackArray {
     int stackSize = 100;

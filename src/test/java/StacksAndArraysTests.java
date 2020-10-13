@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import util.*;
+import util.stackandqueues.*;
 
 import java.util.ArrayDeque;
 

@@ -1,7 +1,7 @@
 package DataStructures;
 
-import util.ListNode;
-import util.NodeWrapper;
+import util.linkedlists.ListNode;
+import util.linkedlists.NodeWrapper;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

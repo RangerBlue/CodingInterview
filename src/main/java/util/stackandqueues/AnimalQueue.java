@@ -1,6 +1,4 @@
-package util;
-
-import DataStructures.LinkedLists;
+package util.stackandqueues;
 
 import java.util.LinkedList;
 
