@@ -132,4 +132,25 @@ public class StacksAndArraysTests {
         assertEquals(expectedStack.pop(), actualStack.pop());
     }
 
+    //3.7
+    @Test
+    public void testAnimalQueue() {
+        AnimalQueue animalQueue = new AnimalQueue();
+        Dog dog1 = new Dog("Maksio");
+        Dog dog2 = new Dog("Paproch");
+        Dog dog3 = new Dog("Milek");
+        Cat cat1 = new Cat("Kot1");
+        Cat cat2 = new Cat("Kot2");
+
+        animalQueue.enqueue(dog1);
+        animalQueue.enqueue(cat1);
+        animalQueue.enqueue(dog2);
+        animalQueue.enqueue(cat2);
+        animalQueue.enqueue(dog3);
+
+        assertEquals(dog1, animalQueue.dequeueAny());
+        assertEquals(dog2, animalQueue.dequeueDogs());
+        assertEquals(cat1, animalQueue.dequeueCats());
+    }
+
 }
