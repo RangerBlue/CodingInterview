@@ -72,4 +72,21 @@ public class TreesAndGraphs {
         }
         return false;
     }
+
+    ///4.3
+    public static TreeNode createMinimalBinarySearchTree(int[] input) {
+        return createMinimalBinarySearchTree(input, 0, input.length - 1);
+    }
+
+    public static TreeNode createMinimalBinarySearchTree(int[] input, int start, int end) {
+        if (end < start) {
+            return null;
+        }
+        int mid = (start + end) / 2;
+        TreeNode n = new TreeNode(input[mid]);
+        n.left = createMinimalBinarySearchTree(input, start, mid - 1);
+        n.right = createMinimalBinarySearchTree(input, mid + 1, end);
+        return n;
+    }
+
 }

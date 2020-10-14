@@ -43,6 +43,7 @@ public class TreesAndGraphsTests {
         assertFalse(TreesAndGraphs.isBalanced(root));
     }
 
+    //4.2
     @Test
     public void testDoesEdgeExistBetweenTwoVertices() {
         Graph graph = new Graph();
@@ -64,7 +65,40 @@ public class TreesAndGraphsTests {
         assertTrue(TreesAndGraphs.search(graph, new Vertex("Bob"), new Vertex("Alice")));
         assertFalse(TreesAndGraphs.search(graph, new Vertex("Alice"), new Vertex("Bob")));
         assertFalse(TreesAndGraphs.search(graph, new Vertex("Bob"), new Vertex("Mark")));
+    }
 
+    //4.3
+    @Test
+    public void testCreateMinimalBST() {
+        int[] input = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        TreeNode expectedRoot = new TreeNode(5);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
+        TreeNode node9 = new TreeNode(9);
+        TreeNode node10 = new TreeNode(10);
+        expectedRoot.left = node2;
+        expectedRoot.right = node8;
 
+        node2.left = node1;
+        node2.right = node3;
+
+        node1.right = node3;
+        node3.right = node4;
+
+        node8.left = node6;
+        node8.right = node9;
+
+        node6.right = node7;
+        node9.left = node8;
+        node9.right = node10;
+
+        TreeNode actual = TreesAndGraphs.createMinimalBinarySearchTree(input);
+        assertEquals(expectedRoot, actual);
+        assertEquals(expectedRoot.left, actual.left);
     }
 }
