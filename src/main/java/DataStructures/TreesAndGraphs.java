@@ -1,9 +1,6 @@
 package DataStructures;
 
-import util.treesandgraphs.Graph;
-import util.treesandgraphs.State;
-import util.treesandgraphs.TreeNode;
-import util.treesandgraphs.Vertex;
+import util.treesandgraphs.*;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -177,4 +174,33 @@ public class TreesAndGraphs {
 
         return true;
     }
+
+    //4.6
+    public static TreeNodeWithParent leftMostChild(TreeNodeWithParent n) {
+        if (n == null) {
+            return null;
+        }
+        while (n.left != null) {
+            n = n.left;
+        }
+
+        return n;
+    }
+
+    public static TreeNodeWithParent inorderSuccessor(TreeNodeWithParent n) {
+        if (n == null) {
+            return null;
+        }
+        if (n.right != null) {
+            return leftMostChild(n.right);
+        }
+        TreeNodeWithParent q = n;
+        TreeNodeWithParent x = q.parent;
+        while (x != null && x.left != q) {
+            q = x;
+            x = x.parent;
+        }
+        return x;
+    }
+
 }

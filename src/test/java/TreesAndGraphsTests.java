@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import sun.reflect.generics.tree.Tree;
 import util.treesandgraphs.Graph;
 import util.treesandgraphs.TreeNode;
+import util.treesandgraphs.TreeNodeWithParent;
 import util.treesandgraphs.Vertex;
 
 import java.util.*;
@@ -201,5 +202,46 @@ public class TreesAndGraphsTests {
         node9.right = node10;
 
         assertFalse(TreesAndGraphs.checkIsTreeBST(root));
+    }
+
+    //4.6
+    @Test
+    public void testInorderSuccessor() {
+        TreeNodeWithParent root = new TreeNodeWithParent(5);
+        TreeNodeWithParent node1 = new TreeNodeWithParent(1);
+        TreeNodeWithParent node2 = new TreeNodeWithParent(2);
+        TreeNodeWithParent node3 = new TreeNodeWithParent(3);
+        TreeNodeWithParent node4 = new TreeNodeWithParent(4);
+        TreeNodeWithParent node6 = new TreeNodeWithParent(6);
+        TreeNodeWithParent node7 = new TreeNodeWithParent(7);
+        TreeNodeWithParent node8 = new TreeNodeWithParent(8);
+        TreeNodeWithParent node9 = new TreeNodeWithParent(9);
+        TreeNodeWithParent node10 = new TreeNodeWithParent(10);
+        root.left = node2;
+        node2.parent = root;
+
+        root.right = node8;
+        node8.parent = root;
+
+        node2.left = node1;
+        node1.parent = node2;
+        node2.right = node3;
+        node3.parent = node2;
+
+        node3.right = node4;
+        node4.parent = node3;
+
+        node8.left = node6;
+        node6.parent = node8;
+        node8.right = node9;
+        node9.parent = node8;
+
+        node6.right = node7;
+        node7.parent = node6;
+        node9.right = node10;
+        node10.parent = node9;
+
+        assertEquals(node2, TreesAndGraphs.inorderSuccessor(node1));
+        assertNotEquals(node1, TreesAndGraphs.inorderSuccessor(node1));
     }
 }
