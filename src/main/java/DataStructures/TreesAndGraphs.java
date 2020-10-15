@@ -156,4 +156,25 @@ public class TreesAndGraphs {
         }
         return result;
     }
+
+    //4.5
+    public static boolean checkIsTreeBST(TreeNode n) {
+        return checkIsTreeBST(n, null, null);
+    }
+
+    public static boolean checkIsTreeBST(TreeNode n, Integer min, Integer max) {
+        if (n == null) {
+            return true;
+        }
+
+        if ((min != null && n.value <= min) || (max != null && n.value > max)) {
+            return false;
+        }
+
+        if (!checkIsTreeBST(n.left, min, n.value) || !checkIsTreeBST(n.right, n.value, max)) {
+            return false;
+        }
+
+        return true;
+    }
 }

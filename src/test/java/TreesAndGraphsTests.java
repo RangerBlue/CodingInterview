@@ -143,4 +143,63 @@ public class TreesAndGraphsTests {
         assertArrayEquals(level2, result.get(2).stream().map(treeNode -> treeNode.value).toArray());
         assertArrayEquals(level3, result.get(3).stream().map(treeNode -> treeNode.value).toArray());
     }
+
+    //4.5
+    @Test
+    public void testIsTreeBSTSuccess() {
+        TreeNode root = new TreeNode(5);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
+        TreeNode node9 = new TreeNode(9);
+        TreeNode node10 = new TreeNode(10);
+        root.left = node2;
+        root.right = node8;
+
+        node2.left = node1;
+        node2.right = node3;
+
+        node3.right = node4;
+
+        node8.left = node6;
+        node8.right = node9;
+
+        node6.right = node7;
+        node9.right = node10;
+
+        assertTrue(TreesAndGraphs.checkIsTreeBST(root));
+    }
+
+    @Test
+    public void testIsTreeBSTFailure() {
+        TreeNode root = new TreeNode(5);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(11);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
+        TreeNode node9 = new TreeNode(9);
+        TreeNode node10 = new TreeNode(10);
+        root.left = node2;
+        root.right = node8;
+
+        node2.left = node1;
+        node2.right = node3;
+
+        node3.right = node4;
+
+        node8.left = node6;
+        node8.right = node9;
+
+        node6.right = node7;
+        node9.right = node10;
+
+        assertFalse(TreesAndGraphs.checkIsTreeBST(root));
+    }
 }
