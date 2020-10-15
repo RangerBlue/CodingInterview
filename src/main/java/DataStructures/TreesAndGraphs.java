@@ -5,6 +5,8 @@ import util.treesandgraphs.State;
 import util.treesandgraphs.TreeNode;
 import util.treesandgraphs.Vertex;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class TreesAndGraphs {
@@ -89,4 +91,69 @@ public class TreesAndGraphs {
         return n;
     }
 
+    public static ArrayList<Integer> printBinaryTreeBreadthFirst(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+
+        if (root != null) {
+            result.add(root.value);
+            queue.add(root);
+        }
+        while (!queue.isEmpty()) {
+            LinkedList<TreeNode> parents = queue;
+            queue = new LinkedList<>();
+            for (TreeNode node : parents) {
+                result.add(node.value);
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+        }
+        return result;
+    }
+
+    public static ArrayList<Integer> printBinaryTreeDepthFirst(TreeNode root) {
+        ArrayDeque<TreeNode> stack = new ArrayDeque<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        TreeNode current;
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            current = stack.pop();
+            result.add(current.value);
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
+        return result;
+    }
+
+    //4.4
+    public static ArrayList<LinkedList<TreeNode>> createLevelLinkedList(TreeNode root) {
+        ArrayList<LinkedList<TreeNode>> result = new ArrayList<>();
+        LinkedList<TreeNode> current = new LinkedList<>();
+        if (root != null) {
+            current.add(root);
+        }
+
+        while (current.size() > 0) {
+            result.add(current);
+            LinkedList<TreeNode> parents = current;
+            current = new LinkedList<>();
+            for (TreeNode parent : parents) {
+                if (parent.left != null) {
+                    current.add(parent.left);
+                }
+                if (parent.right != null) {
+                    current.add(parent.right);
+                }
+            }
+        }
+        return result;
+    }
 }
