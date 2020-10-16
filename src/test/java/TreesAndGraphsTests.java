@@ -244,4 +244,103 @@ public class TreesAndGraphsTests {
         assertEquals(node2, TreesAndGraphs.inorderSuccessor(node1));
         assertNotEquals(node1, TreesAndGraphs.inorderSuccessor(node1));
     }
+
+    //4.7
+    @Test
+    public void testIsCommonAncestorExists() {
+        TreeNode root = new TreeNode(5);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(11);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
+        TreeNode node9 = new TreeNode(9);
+        TreeNode node10 = new TreeNode(10);
+        TreeNode node11 = new TreeNode(11);
+        root.left = node2;
+        root.right = node8;
+
+        node2.left = node1;
+        node2.right = node3;
+
+        node3.right = node4;
+
+        node8.left = node6;
+        node8.right = node9;
+
+        node6.right = node7;
+        node9.right = node10;
+
+        assertEquals(root, TreesAndGraphs.commonAncestor(root, node2, node8));
+        assertEquals(node2, TreesAndGraphs.commonAncestor(root, node1, node3));
+        assertEquals(node8, TreesAndGraphs.commonAncestor(root, node7, node10));
+        assertNull(TreesAndGraphs.commonAncestor(root, node7, node11));
+    }
+
+    //4.8
+    @Test
+    public void testIsTreeSubtree() {
+        TreeNode root = new TreeNode(5);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(11);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
+        TreeNode node9 = new TreeNode(9);
+        TreeNode node10 = new TreeNode(10);
+        TreeNode node11 = new TreeNode(11);
+        root.left = node2;
+        root.right = node8;
+
+        node2.left = node1;
+        node2.right = node3;
+
+        node3.right = node4;
+
+        node8.left = node6;
+        node8.right = node9;
+
+        node6.right = node7;
+        node9.right = node10;
+
+        assertTrue(TreesAndGraphs.containsTree(root, node8));
+        assertTrue(TreesAndGraphs.containsTree(root, root));
+        assertTrue(TreesAndGraphs.containsTree(root, node3));
+        assertFalse(TreesAndGraphs.containsTree(root, node11));
+    }
+
+    //4.9
+    @Test
+    public void testFindSum() {
+        TreeNode root = new TreeNode(5);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(11);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
+        TreeNode node9 = new TreeNode(9);
+        TreeNode node10 = new TreeNode(10);
+        TreeNode node11 = new TreeNode(11);
+        root.left = node2;
+        root.right = node8;
+
+        node2.left = node1;
+        node2.right = node3;
+
+        node3.right = node4;
+
+        node8.left = node6;
+        node8.right = node9;
+
+        node6.right = node7;
+        node9.right = node10;
+
+        TreesAndGraphs.findSum(root, 8);
+    }
 }

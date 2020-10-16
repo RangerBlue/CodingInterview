@@ -203,4 +203,119 @@ public class TreesAndGraphs {
         return x;
     }
 
+    //4.7
+    public static boolean isNodeChildOfRoot(TreeNode root, TreeNode p) {
+        if (root == null) {
+            return false;
+        }
+        if (root == p) {
+            return true;
+        }
+        return isNodeChildOfRoot(root.left, p) || isNodeChildOfRoot(root.right, p);
+    }
+
+    public static TreeNode commonAncestorHelper(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null) {
+            return null;
+        }
+        if ((root == p) || (root == q)) {
+            return root;
+        }
+
+        boolean isPOnTheLeft = isNodeChildOfRoot(root.left, p);
+        boolean isQOnTheLeft = isNodeChildOfRoot(root.left, q);
+
+        if (isPOnTheLeft != isQOnTheLeft) {
+            return root;
+        }
+
+        TreeNode childSide = isPOnTheLeft ? root.left : root.right;
+        return commonAncestorHelper(childSide, p, q);
+    }
+
+    public static TreeNode commonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (!isNodeChildOfRoot(root, p) || !isNodeChildOfRoot(root, q)) {
+            return null;
+        }
+
+        return commonAncestorHelper(root, p, q);
+    }
+
+    //4.8
+    public static boolean containsTree(TreeNode t1, TreeNode t2) {
+        if (t2 == null) {
+            return true;
+        }
+        return subTree(t1, t2);
+    }
+
+    public static boolean subTree(TreeNode r1, TreeNode r2) {
+        if (r1 == null) {
+            return false;
+        }
+        if (r1.value == r2.value) {
+            if (matchTree(r1, r2)) {
+                return true;
+            }
+        }
+        return (subTree(r1.left, r2) || subTree(r1.right, r2));
+    }
+
+    public static boolean matchTree(TreeNode r1, TreeNode r2) {
+        if (r2 == null && r1 == null) {
+            return true;
+        }
+
+        if (r1 == null || r2 == null) {
+            return false;
+        }
+
+        if (r1.value != r2.value) {
+            return false;
+        }
+
+        return (matchTree(r1.left, r2.left) && matchTree(r1.right, r2.right));
+    }
+
+    //4.9
+    public static void findSum(TreeNode node, int sum, int[] path, int level) {
+        if (node == null) {
+            return;
+        }
+
+        path[level] = node.value;
+        int t = 0;
+        for (int i = level; i >= 0; i--) {
+            t += path[i];
+            if (t == sum) {
+                print(path, i, level);
+            }
+        }
+
+        findSum(node.left, sum, path, level + 1);
+        findSum(node.right, sum, path, level + 1);
+
+        path[level] = Integer.MIN_VALUE;
+    }
+
+    public static void findSum(TreeNode node, int sum) {
+        int depth = depth(node);
+        int[] path = new int[depth];
+        findSum(node, sum, path, 0);
+    }
+
+    public static void print(int[] path, int start, int end) {
+        for (int i = start; i <= end; i++) {
+            System.out.println(path[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static int depth(TreeNode node) {
+        if (node == null) {
+            return 0;
+        } else {
+            return 1 + Math.max(depth(node.left), depth(node.right));
+        }
+    }
 }
