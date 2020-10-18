@@ -1,4 +1,4 @@
-import DataStructures.LinkedLists;
+import datastructures.LinkedLists;
 import org.junit.Test;
 import util.linkedlists.ListNode;
 import util.linkedlists.NodeWrapper;

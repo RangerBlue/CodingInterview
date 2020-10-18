@@ -1,16 +1,14 @@
-import DataStructures.TreesAndGraphs;
+import datastructures.TreesAndGraphs;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import sun.reflect.generics.tree.Tree;
 import util.treesandgraphs.Graph;
 import util.treesandgraphs.TreeNode;
 import util.treesandgraphs.TreeNodeWithParent;
 import util.treesandgraphs.Vertex;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class TreesAndGraphsTests {
     //4.1

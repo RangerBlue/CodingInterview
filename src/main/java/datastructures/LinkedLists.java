@@ -1,4 +1,4 @@
-package DataStructures;
+package datastructures;
 
 import util.linkedlists.ListNode;
 import util.linkedlists.NodeWrapper;

@@ -1,4 +1,4 @@
-import DataStructures.ArraysAndCharSequences;
+import datastructures.ArraysAndCharSequences;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,4 +1,4 @@
-import DataStructures.StacksAndQueues;
+import datastructures.StacksAndQueues;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
