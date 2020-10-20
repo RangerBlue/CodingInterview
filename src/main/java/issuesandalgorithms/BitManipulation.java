@@ -44,4 +44,55 @@ public class BitManipulation {
         }
         return binary.toString();
     }
+
+    //5.3
+    private static int countOnes(String n) {
+        int ones = 0;
+        for (int i = 0; i < n.length(); i++) {
+            if ((int) n.charAt(i) == '1') {
+                ones++;
+            }
+        }
+        return ones;
+    }
+
+    public static int getNextBinary(int n) {
+        String inputBinaryForm = Integer.toBinaryString(n);
+        int value = n + 1;
+        int ones = countOnes(inputBinaryForm);
+        int zeros = inputBinaryForm.length() - ones;
+        int onesCount = 0;
+        String bitValue = "";
+        while (Integer.toBinaryString(value).length() <= inputBinaryForm.length()) {
+            bitValue = Integer.toBinaryString(value);
+            onesCount = countOnes(bitValue);
+            if (onesCount == ones) {
+                if ((bitValue.length() - onesCount) == zeros) {
+                    return value;
+                }
+            }
+            value++;
+        }
+        return n;
+    }
+
+    public static int getPrevBinary(int n) {
+        String inputBinaryForm = Integer.toBinaryString(n);
+        int value = n - 1;
+        int ones = countOnes(inputBinaryForm);
+        int zeros = inputBinaryForm.length() - ones;
+        int onesCount = 0;
+        String bitValue = "";
+        while (Integer.toBinaryString(value).length() <= inputBinaryForm.length() && value > 0) {
+            bitValue = Integer.toBinaryString(value);
+            onesCount = countOnes(bitValue);
+            if (onesCount == ones) {
+                if ((bitValue.length() - onesCount) == zeros) {
+                    return value;
+                }
+            }
+            value--;
+        }
+        return n;
+    }
 }
