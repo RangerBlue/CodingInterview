@@ -95,4 +95,31 @@ public class BitManipulation {
         }
         return n;
     }
+
+    //5.5
+    public static int bitSwapAmount(int a, int b) {
+        int count = 0;
+        for (int c = a ^ b; c != 0; c = c >> 1) {
+            count += c & 1;
+        }
+        return count;
+    }
+
+    //5.6
+    public static int swapOddEvenBits(int x) {
+        int odd = x & 0b10101010101010101010101010101010;
+        int even = x & 0b01010101010101010101010101010101;
+        return (odd >> 1) | (even << 1);
+    }
+
+    //5.7
+    public static int findMissingValue(int[] input, int length) {
+        int sum = length * (length + 1) / 2;
+        int inputSum = 0;
+        for (int x : input) {
+            inputSum += x;
+        }
+        return sum - inputSum;
+    }
+
 }
