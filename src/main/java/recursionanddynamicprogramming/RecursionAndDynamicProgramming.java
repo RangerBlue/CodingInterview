@@ -1,5 +1,6 @@
 package recursionanddynamicprogramming;
 
+import util.recursionanddynamicprogramic.Color;
 import util.recursionanddynamicprogramic.Point;
 
 import java.util.ArrayList;
@@ -141,5 +142,28 @@ public class RecursionAndDynamicProgramming {
             }
         }
         return set;
+    }
+
+    //9.7
+    public static boolean paintFill(Color[][] screen, int x, int y, Color oldColor, Color newColor) {
+        if (x < 0 || x >= screen[0].length ||
+                y < 0 || y >= screen.length) {
+            return false;
+        }
+        if (screen[y][x] == oldColor) {
+            screen[y][x] = newColor;
+            paintFill(screen, x - 1, y, oldColor, newColor);//left
+            paintFill(screen, x + 1, y, oldColor, newColor);//right
+            paintFill(screen, x, y - 1, oldColor, newColor);//up
+            paintFill(screen, x, y + 1, oldColor, newColor);//down
+        }
+        return true;
+    }
+
+    public static boolean paintFill(Color[][] screen, int x, int y, Color newColor) {
+        if (screen[y][x] == newColor) {
+            return false;
+        }
+        return paintFill(screen, x, y, screen[y][x], newColor);
     }
 }

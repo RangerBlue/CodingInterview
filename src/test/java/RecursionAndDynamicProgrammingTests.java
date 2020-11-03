@@ -1,9 +1,9 @@
 import org.junit.Test;
 import recursionanddynamicprogramming.RecursionAndDynamicProgramming;
+import util.recursionanddynamicprogramic.Color;
 import util.recursionanddynamicprogramic.Point;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -111,6 +111,23 @@ public class RecursionAndDynamicProgrammingTests {
         expected.add("(())()");
         expected.add("((()))");
         assertEquals(expected, RecursionAndDynamicProgramming.generateParens(3));
+    }
+
+    //9.7
+    @Test
+    public void testPaintFill() {
+        Color[][] input = {
+                {Color.Black, Color.Black, Color.Black},
+                {Color.Black, Color.Black, Color.Black},
+                {Color.Black, Color.Black, Color.Black}
+        };
+        Color[][] output = {
+                {Color.Green, Color.Green, Color.Green},
+                {Color.Green, Color.Green, Color.Green},
+                {Color.Green, Color.Green, Color.Green}
+        };
+        RecursionAndDynamicProgramming.paintFill(input, 1, 1, Color.Green);
+        assertArrayEquals(output,input );
     }
 }
 
