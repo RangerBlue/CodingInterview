@@ -1,4 +1,4 @@
-package recursionanddynamicprogramming;
+package issuesandalgorithms;
 
 import util.recursionanddynamicprogramic.Color;
 import util.recursionanddynamicprogramic.Point;

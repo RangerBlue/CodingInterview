@@ -1,5 +1,5 @@
 import org.junit.Test;
-import recursionanddynamicprogramming.RecursionAndDynamicProgramming;
+import issuesandalgorithms.RecursionAndDynamicProgramming;
 import util.recursionanddynamicprogramic.Color;
 import util.recursionanddynamicprogramic.Point;
 
