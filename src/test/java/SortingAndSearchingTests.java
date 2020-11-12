@@ -1,8 +1,11 @@
 import issuesandalgorithms.SortingAndSearching;
 import org.junit.Test;
+import util.sortingandsearching.AnagramComparator;
 import util.sortingandsearching.BinarySearch;
 import util.sortingandsearching.MergeSort;
 import util.sortingandsearching.QuickSort;
+
+import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -40,6 +43,22 @@ public class SortingAndSearchingTests {
 
         SortingAndSearching.merge(a, b, 8, 6);
         assertArrayEquals(output, a);
+    }
+
+    //11.2
+    @Test
+    public void testAnagramComparator() {
+        String[] input = {"kamil", "kon", "limak", "echo", "anagram", "gramana"};
+        String[] expected = {"anagram", "gramana", "kamil", "limak", "echo", "kon"};
+        Arrays.sort(input, new AnagramComparator());
+        assertArrayEquals(expected, input);
+    }
+
+    //11.5
+    @Test
+    public void testSearch() {
+        String[] input = {"kamil", " ", "limak", "echo", " ", "gramana"};
+        assertEquals(2, SortingAndSearching.search(input, "limak"));
     }
 
 }
