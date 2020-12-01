@@ -1,6 +1,8 @@
 package threadsandlocks;
 
 import util.threads.Chopstick;
+import util.threads.Foo;
+import util.threads.MyThread;
 import util.threads.Philosopher;
 
 public class ThreadsAndLocks {
@@ -31,5 +33,16 @@ public class ThreadsAndLocks {
         for (int i = 0; i < philosophersNumber; i++) {
             philosophers[i].start();
         }
+
+        //16.5
+        Foo foo = new Foo();
+
+        MyThread thread1 = new MyThread(foo, "first");
+        MyThread thread2 = new MyThread(foo, "second");
+        MyThread thread3 = new MyThread(foo, "third");
+
+        thread3.start();
+        thread2.start();
+        thread1.start();
     }
 }
