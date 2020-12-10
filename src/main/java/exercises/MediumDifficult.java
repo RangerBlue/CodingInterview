@@ -2,9 +2,12 @@ package exercises;
 
 import util.mediumdifficult.Pair;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class MediumDifficult {
+    //17.1
     public static Pair swap(Pair x) {
         x.a = x.a - x.b;
         x.b = x.a + x.b;
@@ -12,6 +15,7 @@ public class MediumDifficult {
         return x;
     }
 
+    //17.3
     public static int factorsOf5(int i) {
         int count = 0;
         while (i % 5 == 0) {
@@ -39,6 +43,8 @@ public class MediumDifficult {
         }
     }
 
+
+    //17.5
     public static class Result {
         public int hits;
         public int pseudoHits;
@@ -113,5 +119,41 @@ public class MediumDifficult {
             }
         }
         return res;
+    }
+
+    //17.8
+    public static int getMaxSum(int[] a) {
+        int maxSum = a[0];
+        int runningSum = a[0];
+        for (int i = 1; i < a.length; i++) {
+            runningSum += a[i];
+            if (maxSum < runningSum) {
+                maxSum = runningSum;
+            }
+        }
+        return maxSum;
+    }
+
+    //17.12
+    public static ArrayList<Pair> findPairSums(int[] array, int sum) {
+        ArrayList<Pair> results = new ArrayList<>();
+        Arrays.sort(array);
+        int first = 0;
+        int last = array.length - 1;
+        while (first < last) {
+            int s = array[first] + array[last];
+            if (s == sum) {
+                results.add(new Pair(array[first], array[last]));
+                ++first;
+                --last;
+            } else {
+                if (s < sum) {
+                    ++first;
+                } else {
+                    --last;
+                }
+            }
+        }
+        return results;
     }
 }
